@@ -40,7 +40,7 @@ function validateHotelRooms(hotel) {
         checkOut:Joi.Date().required(),
         numberOfNights:Joi.Number().required(false),
         adults:Joi.Number().required(),
-        children:Joi.Number().required(),
+        children:Joi.Number().required(false),
         rooms:Joi.String().Array().required()
 
     };
