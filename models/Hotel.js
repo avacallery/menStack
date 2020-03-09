@@ -41,7 +41,7 @@ function validateHotelRooms(hotel) {
         numberOfNights:Joi.Number().required(false),
         adults:Joi.Number().required(),
         children:Joi.Number().required(),
-        rooms:Joi.String().Array.required()
+        rooms:Joi.String().Array().required()
 
     };
     return Joi.validate(hotel, schema);
