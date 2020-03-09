@@ -1,13 +1,15 @@
-const express = require('express'); 
-const router = express.Router(); 
-const hotelRoom = require('../../models/Hotel.js')
+const { hotelSchema, validate } = require('../models/Hotel');
+const mongoose = require('mongoose');
+const express = require('express');
+const router = express.Router();
 
 router.get('/', (req, res) => {
     res.send({msg: "Works"});
 });
 
-router.get('/', (req, res) => {
-    res.send()
-})
+router.get('/', async(req, res) => {
+    const leHotel = await hotelSchema.find().sort('roomsBytype');
+    res.send(leHotel);
+});
 
 module.exports = router; 
