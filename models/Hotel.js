@@ -23,7 +23,7 @@ const Hotel = mongoose.model('Hotel', new mongoose.Schema({
         required: false
     },
     rooms: {
-        type: ["string", "array"],
+        type: String + Array,
         roomsByType: [
             {roomType: 'Deluxe Suite', roomNumbers: [101, 103, 106, 109, 112]},
             {roomType: 'Executive Suite', roomNumbers: [202, 204, 206, 208, 210]},
@@ -32,3 +32,20 @@ const Hotel = mongoose.model('Hotel', new mongoose.Schema({
         ]
     }
 }));
+
+function validateHotelRooms(hotel) {
+
+    const schema = {
+        checkIn:Joi.Date().required(),
+        checkOut:Joi.Date().required(),
+        numberOfNights:Joi.Number().required(false),
+        adults:Joi.Number().required(),
+        children:Joi.Number().required(),
+        rooms:Joi.String().Array.required()
+
+    };
+    return Joi.validate(hotel, schema);
+}
+
+exports.Hotel = Hotel;
+exports.validate = validateHotelRooms; 
