@@ -1,7 +1,7 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
 
-const Hotel = mongoose.model('Hotel', new mongoose.Schema({
+const hotelSchema = mongoose.model('Hotel', new mongoose.Schema({
     checkIn: {
         type: Date,
         required: true
@@ -47,5 +47,5 @@ function validateHotelRooms(hotel) {
     return Joi.validate(hotel, schema);
 }
 
-exports.Hotel = Hotel;
+exports.hotelSchema = hotelSchema;
 exports.validate = validateHotelRooms; 
