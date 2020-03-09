@@ -12,7 +12,7 @@ const Hotel = mongoose.model('Hotel', new mongoose.Schema({
     },
     numberOfNights: {
         type: Number,
-        required: true
+        required: false
     },
     adults: {
         type: Number,
@@ -21,5 +21,14 @@ const Hotel = mongoose.model('Hotel', new mongoose.Schema({
     children: {
         type: Number,
         required: false
+    },
+    rooms: {
+        type: String,
+        roomsByType: [
+            {roomType: 'Deluxe Suite', roomNumbers: [101, 103, 106, 109, 112]},
+            {roomType: 'Executive Suite', roomNumbers: [202, 204, 206, 208, 210]},
+            {roomType: 'Terrace Suite', roomNumbers: [304, 308, 312, 316]},
+            {roomType: 'Penthouse Suite', roomNumbers: [400, 410, 420]}
+        ]
     }
 }));
