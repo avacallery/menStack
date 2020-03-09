@@ -23,7 +23,7 @@ const Hotel = mongoose.model('Hotel', new mongoose.Schema({
         required: false
     },
     rooms: {
-        type: String,
+        type: ["string", "array"],
         roomsByType: [
             {roomType: 'Deluxe Suite', roomNumbers: [101, 103, 106, 109, 112]},
             {roomType: 'Executive Suite', roomNumbers: [202, 204, 206, 208, 210]},
