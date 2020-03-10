@@ -1,7 +1,7 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
 
-const Hotel = mongoose.model('Hotel', new mongoose.Schema({
+const hotelSchema = mongoose.model('hotelSchema', new mongoose.Schema({
     // checkIn: {
     //     type: Date,
     //     required: true
@@ -33,19 +33,19 @@ const Hotel = mongoose.model('Hotel', new mongoose.Schema({
     }
 }));
 
-function validateHotelRooms(hotel) {
+// function validateHotelRooms(hotel) {
 
-    const schema = {
-        // checkIn:Joi.Date().required(),
-        // checkOut:Joi.Date().required(),
-        // numberOfNights:Joi.Number().required(false),
-        // // adults:Joi.Number().required(),
-        // // children:Joi.Number().required(false),
-        rooms:Joi.String().Array().required()
+//     const schema = {
+//         // checkIn:Joi.Date().required(),
+//         // checkOut:Joi.Date().required(),
+//         // numberOfNights:Joi.Number().required(false),
+//         // // adults:Joi.Number().required(),
+//         // // children:Joi.Number().required(false),
+//         rooms:Joi.String().Array().required()
 
-    };
-    return Joi.validate(hotel, schema);
-}
+//     };
+//     return Joi.validate(hotel, schema);
+// }
 
-exports.Hotel = Hotel;
-exports.validate = validateHotelRooms; 
+exports.hotelSchema = hotelSchema;
+// exports.validate = validateHotelRooms; 
