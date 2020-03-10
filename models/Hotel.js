@@ -10,10 +10,9 @@ const hotelSchema = mongoose.model('Hotel', new mongoose.Schema({
         type: Date,
         required: true
     },
-    numberOfNights: {
-        type: Number,
-        required: false
-    },
+    // numberOfNights: {
+    //     type: Number,
+    //     required: false
     adults: {
         type: Number,
         required: true
