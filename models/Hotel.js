@@ -37,7 +37,7 @@ function validateHotelRooms(hotel) {
     const schema = {
         checkIn:Joi.Date().required(),
         checkOut:Joi.Date().required(),
-        numberOfNights:Joi.Number().required(false),
+        // numberOfNights:Joi.Number().required(false),
         adults:Joi.Number().required(),
         children:Joi.Number().required(false),
         rooms:Joi.String().Array().required()
