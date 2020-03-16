@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const keys = require("./config/keys");
 const hotelRooms = require('./routes/api/hotels')
+const Joi = require('joi'); 
 
 const app = express();
 
