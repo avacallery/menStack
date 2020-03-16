@@ -1,40 +1,24 @@
-const { Hotel, validate } = require('../../models/Hotel');
+const { hotelSchema } = require('../../models/Hotel');
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.send({msg: "Works"});
+router.get('/', async (req, res) => {
+    const name = await hotelSchema.find();
+    res.send(name);
 });
 
-// router.get('/', async(req, res) => {
-//     const hotelRooms = new Hotel(Hotel.rooms);
-//     const doc = await hotelRooms.save()
-//     console.log(doc)
-//     res.send(hotelRooms);
-//
-// });
-
 router.post('/', async (req, res) => {
-    // test array i posted was: "rooms" : "['Deluxe Suite',101]"
-    console.log(req.body)
-    const { error } = validate(req.body);
-    if (error) return res.status(400).send(error.details[0].message);
-
-    let hotelRoom = new Hotel({
-        checkIn: req.body.checkIn,
-        checkOut: req.body.checkOut,
+    let hotelRoom = new hotelSchema({
+        // checkIn: req.body.checkIn,
+        // checkOut: req.body.checkOut,
         numberOfNights: req.body.numberOfNights,
-        adults: req.body.adults,
-        children: req.body.children,
-        rooms: req.body.rooms
+        room: req.body.room
     });
 
     hotelRoom = await hotelRoom.save();
-
+    console.log(hotelRoom); 
     res.send(hotelRoom);
 });
-
-
-
+  
 module.exports = router; 
