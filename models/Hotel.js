@@ -1,6 +1,4 @@
-const Joi = require('joi');
 const mongoose = require('mongoose');
-
 const hotelSchema = mongoose.model('Hotel', new mongoose.Schema({
     // checkIn: {
     //     type: Date,

@@ -3,17 +3,12 @@ const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
 
-// router.get('/', (req, res) => {
-//     res.send({msg: "Works"});
-// });
-
 router.get('/', async (req, res) => {
     const name = await hotelSchema.find();
     res.send(name);
 });
 
 router.post('/', async (req, res) => {
-
     let hotelRoom = new hotelSchema({
         // checkIn: req.body.checkIn,
         // checkOut: req.body.checkOut,
@@ -25,5 +20,5 @@ router.post('/', async (req, res) => {
     console.log(hotelRoom); 
     res.send(hotelRoom);
 });
-
+  
 module.exports = router; 
