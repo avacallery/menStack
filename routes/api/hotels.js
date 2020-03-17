@@ -30,6 +30,21 @@ router.get('/:id', async (req, res) => {
     const hotelRoom = await hotelSchema.findById(req.params.id);
     if (!hotelRoom) return res.status(404).send('The reservation with the given ID was not found.');
     res.send(hotelRoom);
+});
+
+router.put('/:id', async (req, res) => {
+
+      const hotelReservation = await hotelSchema.findByIdAndUpdate(req.params.id, {
+        checkIn: req.body.checkIn,
+        checkOut: req.body.checkOut,
+        numberOfNights: req.body.numberOfNights,
+        room: req.body.room
+    }, { new: false });
+
+    if (!hotelReservation) return res.status(404).send('The reservation with the given ID was not found.');
+
+    res.send(hotelReservation);
+    console.log("Reservation updated.")
 })
 
 module.exports = router; 
