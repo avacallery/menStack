@@ -12,6 +12,12 @@ router.get('/', async (req, res) => {
     res.send(name);
 });
 
+router.get('/:id', async (req, res) => {
+    const hotelRoom = await hotelSchema.findById(req.params.id);
+    if (!hotelRoom) return res.status(404).send('The reservation with the given ID was not found.');
+    res.send(hotelRoom);
+});
+
 router.post('/', async (req, res) => {
 
     let hotelReservation = new hotelSchema({
@@ -24,12 +30,6 @@ router.post('/', async (req, res) => {
     hotelReservation = await hotelReservation.save();
     console.log(hotelReservation); 
     res.send(hotelReservation);
-});
-
-router.get('/:id', async (req, res) => {
-    const hotelRoom = await hotelSchema.findById(req.params.id);
-    if (!hotelRoom) return res.status(404).send('The reservation with the given ID was not found.');
-    res.send(hotelRoom);
 });
 
 router.put('/:id', async (req, res) => {
