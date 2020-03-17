@@ -45,6 +45,12 @@ router.put('/:id', async (req, res) => {
 
     res.send(hotelReservation);
     console.log("Reservation updated.")
-})
+});
+
+router.delete("/:id", async (req, res) => {
+    const hotelRoom = await hotelSchema.findByIdAndRemove(req.params.id);
+    if (!hotelRoom) return res.status(404).send(`No room available`);
+    res.json(hotelRoom)
+});
 
 module.exports = router; 
