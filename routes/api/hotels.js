@@ -14,16 +14,22 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
 
-    let hotelRoom = new hotelSchema({
+    let hotelReservation = new hotelSchema({
         // checkIn: req.body.checkIn,
         // checkOut: req.body.checkOut,
         numberOfNights: req.body.numberOfNights,
         room: req.body.room
     });
 
-    hotelRoom = await hotelRoom.save();
-    console.log(hotelRoom); 
-    res.send(hotelRoom);
+    hotelReservation = await hotelReservation.save();
+    console.log(hotelReservation); 
+    res.send(hotelReservation);
 });
+
+router.get('/:id', async (req, res) => {
+    const hotelRoom = await hotelSchema.findById(req.params.id);
+    if (!hotelRoom) return res.status(404).send('The reservation with the given ID was not found.');
+    res.send(hotelRoom);
+})
 
 module.exports = router; 
