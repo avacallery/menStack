@@ -15,8 +15,8 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
 
     let hotelReservation = new hotelSchema({
-        // checkIn: req.body.checkIn,
-        // checkOut: req.body.checkOut,
+        checkIn: req.body.checkIn,
+        checkOut: req.body.checkOut,
         numberOfNights: req.body.numberOfNights,
         room: req.body.room
     });
