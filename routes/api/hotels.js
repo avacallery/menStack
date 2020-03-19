@@ -1,4 +1,4 @@
-const { hotelSchema } = require('../../models/Hotel');
+const { hotelSchema } = require('../../models/Reservation');
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
@@ -15,16 +15,9 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-<<<<<<< HEAD
-
     let hotelReservation = new hotelSchema({
         checkIn: req.body.checkIn,
         checkOut: req.body.checkOut,
-=======
-    let hotelRoom = new hotelSchema({
-        // checkIn: req.body.checkIn,
-        // checkOut: req.body.checkOut,
->>>>>>> 0fb18a578bfc1c72b2a9085d2a0097d51fb8c93f
         numberOfNights: req.body.numberOfNights,
         room: req.body.room
     });
