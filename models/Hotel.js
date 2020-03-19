@@ -19,6 +19,17 @@ const hotelSchema = mongoose.model('Hotel', new mongoose.Schema({
         type: Number 
         }
     }
-}));  
+})); 
+const { hotelRoomSchema } = require("./hotelRoom");
 
-exports.hotelSchema = hotelSchema;
+module.exports = mongoose.model(
+    "Hotel", new mongoose.Schema({
+        name: {
+            type: String
+        },
+        location: {
+            type: String
+        },
+        rooms: [hotelRoomSchema]
+    })
+);
