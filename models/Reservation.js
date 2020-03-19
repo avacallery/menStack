@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { hotelRoomSchema } = require("./Room");
 
-const reservationSchema = mongoose.model('Reservation', new mongoose.Schema({
+const reservationSchema = new mongoose.Schema({
     checkIn: {
         type: Date,
         required: true
@@ -14,6 +14,8 @@ const reservationSchema = mongoose.model('Reservation', new mongoose.Schema({
         type: Number
     }, 
     rooms: [hotelRoomSchema]
-}));  
+});  
+
+const Reservation = mongoose.model("Reservation", reservationSchema); 
 
 exports.reservationSchema = reservationSchema;
