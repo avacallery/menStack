@@ -14,6 +14,6 @@ mongoose
   .catch(error => console.log("DB Connection error", error));
 
 app.use(express.static("public"));
-app.use('/api/nasa', hotelRooms); 
+app.use('/api/nasa', hotelRoom); 
 
 app.listen(3000, () => console.log("listening on port 3000"));
