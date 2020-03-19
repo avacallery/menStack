@@ -1,4 +1,4 @@
-const { hotelSchema } = require('../../models/Reservation');
+const { hotelSchema } = require('../../models/Hotel');
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
