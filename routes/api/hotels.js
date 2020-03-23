@@ -19,6 +19,7 @@ router.get('/:id', async (req, res) => {
 
 //make a reservation
 router.post('/', async (req, res) => {
+
     let hotelReservation = new Reservation({
         checkIn: req.body.checkIn,
         checkOut: req.body.checkOut,
