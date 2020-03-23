@@ -1,13 +1,13 @@
 const { hotelSchema } = require('../../models/Hotel');
-const { Reservation } = require('../../models/Reservation')
+const { Reservation, reservationSchema } = require('../../models/Reservation')
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
 
-//get list of rooms
+//get list of reservations
 router.get('/', async (req, res) => {
-    const name = await hotelSchema.find();
-    res.send(name);
+    const reservation = await Reservation.find();
+    res.send(reservation);
 });
 
 //get one single reservation by id 
