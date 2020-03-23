@@ -1,72 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>NASA Hotel</title>
-  </head>
-  <body>
-    <h1>HOTEL NAS</h1>
-  </body>
-<!doctype html>
-<html>
     <head>
+
     </head>
     <body>
-            <h1>THE ANGULAR HOTEL</h1>
+        
+        <div>
+            <nav>
+                <ul id="nav-mobile">
+                <li><a href="Home">Home</a></li>
+                <li><a href="Reservations">Reservations</a></li>
+                <li><a href="AboutUs">About Us</a></li>
+                <li><a href="ContactUs">Contact Us</a></li>
+                </ul>
+            </div>
 
-              <div id="dates">
+              </nav>
 
-                  <div class="container">
+            <h1>N.A.S.A Hotel</h1>
+            <button id="all" onclick="getAllRooms()">GET ALL ROOMS</button>
 
-        <form onSubmit="addGrad(event)">
-            <input type="text" placeholder="Enter Grad" id="name">
-            <input type="text" placeholder="Enter Role" id="role">
-            <input type="text" placeholder="Enter Company" id="company">
-            <input type="date" placeholder="Enter Date of Graduation" id="yearOfGraduation">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
-        </form>
+            <div id="allrooms" style="padding: 10px">
+            
+            </div>
 
-        <button id="showAllGrads" class="btn waves-effect waves-light">Show All Graduates</button>
-        <button class="btn waves-effect waves-danger">Delete Graduates</button>
-
-    </div>
-
-                
-            <form>
-              <label for="datemin">Check In date:</label>
-              <input type="date" id="datemin" name="datemin" min="2000-01-02">
-              <label for="datemin">Check Out date:</label>
-              <input type="date" id="datemin" name="datemin" min="2000-01-02">
+            <div id="checkIn">
+             <form action="api/NASA" method="POST">
+            <label for="checkIn">CHECK IN</label>
+            <input type="date" id="checkIn" placeholder="checkIn" name="checkIn">
+            <label for="checkOut">CHECK OUT</label>
+            <input type="date" id="checkOut" placeholder="checkOut" name="checkOut">
+            <label for="numberOfNights">NUMBER OF NIGHTS</label>
+            <input type="number" id="numberOfNights" placeholder="numberOfNights" name="numberOfNights">
+            <label for="roomType">ROOM TYPE</label>
+            <input type="text" id="roomType" placeholder="roomType" name="roomType">
+            <!-- <button id="post" onclick="createReservation()">Create Reservation</button>
+            <button id="update" onclick="updateReservation()">Update Reservation</button>
+            <button id="delete" onclick="deleteReservation()">Delete Reservation</button> -->
+             <button id="submit" type="submit">Submit</button>
             </form>
-            </div>
-
-            <div id="numguests">
-
-            <label for="quantity">Number of guests:</label>
-            <input type="number" id="quantity" name="quantity" min="1" max="4">
-            </div>
-
-            <div id = "numnights">
-            <label for="quantity">Number of nights:</label>
-            <input type="number" id="quantity" name="quantity" min="1" max="30">
-            </div>  
-
-            <h4>We have THE BEST vues in TOWN!</h4>
-            <p>Come check out our amazing staff and even better pricing!</p>
-            <h5>Available Rooms</h5>
-            <div id="hotelRooms">
-            </div>
-            <button type ="button" onclick="theAngularHotel.bookRoom()">Book Room</button>
-            <h5>Booked Rooms</h5>
-            <div id="hotelRoomsBooked">
-                <select>
-                        <option></option>
-                </select>
-            </div>  
-
+            <div>
+        
             <script src="script.js"></script>
-    </body>
 
-</html>
+                <!-- <div id="hotelInfo">
+                <form action="api/nasa" method="POST">
+                <input type="date" placeholder="checkIn" name="checkIn">
+                <input type="date" placeholder="checkOut" name="checkOut">
+                <input type="text" placeholder="numberOfNights" name="numberOfNights">
+                <input type="text" placeholder="roomType" name="roomType">
+                <button id="submit" type="submit">Submit</button>
+                <button id="get" onclick="name">List Rooms</button>
+                </form>
+                </div> -->
+
+            </body>
+</html> 

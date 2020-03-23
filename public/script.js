@@ -1,46 +1,58 @@
-var theAngularHotel = {
- roomType: ["Single", "Double", "Queen", "King"],
- roomNumbers: [[101, 102, 103], [104, 105, 106], [201, 202, 203], [300, 305]],
- roomPrices: [[60], [75], [85], [100]],
- bookedRooms: [ [], [], [], []],   
-    listHotelRooms: function() {
-        var availableRooms = "<select id='selectedRoomNumber'>";
-        for (var i = 0; i < this.roomNumbers.length; i++) {
-            availableRooms += "<optgroup label ="+this.roomType[i]+'-'+this.roomPrices[i]+">"
-            for (var j = 0; j < this.roomNumbers[i].length; j++) {
-                availableRooms += "<option value="+this.roomNumbers[i][j]+">" 
-                +this.roomNumbers[i][j]+"</option>";
+
+        document.getElementById("button").addEventListener("click", getStudentData);
+
+        function getStudentData() {
+
+            var xhr = new XMLHttpRequest();
+            console.log(xhr);
+
+            xhr.open('GET', 'http://localhost:5000/api/graduates/', true);
+            xhr.onload = function () {
+            
+                if (xhr.status == 200) {
+
+                    var parsedData = JSON.parse(xhr.responseText);
+                    var dataList = ""; 
+
+                    for (var i = 0; i < parsedData.length; i++) {
+                        dataList += "<p> Name: " + parsedData[i].name + "<br>" +
+                        "Email: " + parsedData[i].email + "<br>" +
+                        "Date of Graduation:" + parsedData[i].dateOfGraduation + "<br>" +
+                        "Bio: " + parsedData[i].bio + "</p>"
+                        + "<button id='deleteButton' onclick='removeOneStudent'>Delete Student</button>";
+                    }
+
+                    document.getElementById("data").innerHTML = dataList 
+                } else {
+                    console.log("That is an error.");
+                }
             }
-            availableRooms += "</optgroup>";
+            xhr.send();
         }
-        availableRooms += "</select>";
-        document.getElementById("hotelRooms").innerHTML = availableRooms;  
-    }, 
-    bookRoom: function() {
-        var selectSingleRoom = document.getElementById("selectedRoomNumber").value;
-            // selectSingleRoom = 105
-            alert(selectSingleRoom);
-            for (var i =0; i < this.roomNumbers.length; i++) {
-                for (var j =0; j < this.roomNumbers[i].length; j++) {
-                    if (selectSingleRoom == this.roomNumbers[i][j]){ // i=0, j=0
-                this.bookedRooms[i].push(this.roomNumbers[i].splice(j,1)[0]);  
-            }   
-               }
-               this.listHotelRooms();
-               this.unavailableRooms();
-}
-  },
-unavailableRooms: function() {
-var roomsUnavailable= "<select id='unavailableRoomNumbers'>";
-for (var i = 0; i <this.bookedRooms.length; i++) {
-    roomsUnavailable += "<optgroup label="+this.roomType[i]+'-'+this.roomPrices[i]+">"
-        for (var j = 0; j <this.bookedRooms[i].length; j++){
-            roomsUnavailable+= "<option value="+this.bookedRooms[i][j]+">"
-                +this.bookedRooms[i][j]+"</option>";
+
+        function removeOneStudent() {
+
+            var url = "http://localhost:5000/api/graduates"
+            var xhr = new XMLHttpRequest();
+            console.log(xhr); 
+
+                    // const id = document.getElementById("deleteButton").value;
+                    console.log(id);
+                    
+                    //how can we get a specific id of a graduate? 
+                    
+                     xhr.open('DELETE', url + id, true);
+                     xhr.onload = function () {
+            
+                if (xhr.status == 200) {
+
+                    var graduates = JSON.parse(xhr.responseText);
+                    console.log(graduates);
+
+                    console.log("Success.")
+                } else {
+                    console.log("That is an error.");
+                }
+            }
+            xhr.send();
         }
-        roomsUnavailable += "</optgroup>";
-}
-roomsUnavailable += "</select>";
-document.getElementById("hotelRoomsBooked").innerHTML = roomsUnavailable;
-    },
- };
